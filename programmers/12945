@@ -1,0 +1,25 @@
+class Solution {
+    public int solution(int n) {
+        Integer[] fibo = new Integer[n + 1];
+        fibo[0] = 0;
+        fibo[1] = 1;
+
+        return dp(n, fibo);
+    }
+
+    private int dp(int n, Integer[] fibo) {
+        if (fibo[n] != null) {
+            return fibo[n];
+        } else {
+            int n1 = dp(n - 1, fibo);
+            int n2 = dp(n - 2, fibo);
+
+            if (n1 + n2 >= 1234567) {
+                fibo[n] = (n1 + n2) % 1234567 ;
+            } else {
+                fibo[n] = n1 + n2;
+            }
+            return fibo[n];
+        }
+    }
+}
