@@ -1,0 +1,16 @@
+class Solution {
+    public int[] solution(int brown, int yellow) {
+        //  width * height = brown + yellow
+        //  2*width + (height - 2)* 2 = brown
+        //  brown 8 ~ 5000 => 2*width + (height - 2)* 2 = brown => w + h <= 2500
+        for (int height = 3; height <= 2500; height++) {
+            for (int width = 3; width <= 2500; width++) {
+                if (height * width == brown + yellow && height + width == (brown + 4)/2) {
+                    return new int[]{width, height};
+                }
+            }
+        }
+
+        return new int[]{0, 0};
+    }
+}
