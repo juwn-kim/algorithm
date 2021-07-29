@@ -1,0 +1,40 @@
+class Solution {
+    private final static int[] A = new int[]{1, 2, 3, 4, 5};
+    private final static int[] B = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
+    private final static int[] C = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+    public int[] solution(int[] answers) {
+        Integer[] temp = new Integer[]{0 , 0, 0};
+
+        for (int i = 0; i < answers.length; i++) {
+            if (answers[i] == A[i % A.length]) {
+                temp[0]++;
+            }
+            if (answers[i] == B[i % B.length]) {
+                temp[1]++;
+            }
+            if (answers[i] == C[i % C.length]) {
+                temp[2]++;
+            }
+        }
+
+        int maxScore = Math.max(temp[0], Math.max(temp[1], temp[2]));
+        List<Integer> list = new ArrayList<Integer>();
+        if (temp[0] == maxScore) {
+            list.add(1);
+        }
+        if (temp[1] == maxScore) {
+            list.add(2);
+        }
+        if (temp[2] == maxScore) {
+            list.add(3);
+        }
+
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+
+        return answer;
+    }
+}
